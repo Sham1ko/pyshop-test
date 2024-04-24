@@ -69,5 +69,5 @@ export const getScore = (gameStamps: Stamp[], offset: number): Score => {
   return gameStamps[latestStampIndex].score;
 };
 
-const score = getScore(generateStamps(), 30000);
+const score = getScore(generateStamps(), 40);
 console.log("Score:", score);
