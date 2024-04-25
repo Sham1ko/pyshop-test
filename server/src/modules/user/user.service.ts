@@ -42,4 +42,11 @@ export class UserService {
   async validatePassword(plainTextPassword: string, hashedPassword: string) {
     return bcrypt.compare(plainTextPassword, hashedPassword);
   }
+
+  async update(id: number, data: any) {
+    return this.prismaService.user.update({
+      where: { id },
+      data,
+    });
+  }
 }

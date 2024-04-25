@@ -9,6 +9,9 @@ export const useAuthStore = defineStore({
     user: {
       id: undefined,
       email: undefined,
+      name: undefined,
+      phoneNumber: undefined,
+      address: undefined,
     },
     token: undefined,
     isLoggedIn: false,
@@ -41,6 +44,9 @@ export const useAuthStore = defineStore({
       this.user = {
         id: undefined,
         email: undefined,
+        name: undefined,
+        phoneNumber: undefined,
+        address: undefined,
       };
       this.token = undefined;
       this.isLoggedIn = false;

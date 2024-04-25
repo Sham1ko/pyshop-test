@@ -41,7 +41,6 @@ export default route(function (/* { store, ssrContext } */) {
       if (!localStorage.getItem('token')) {
         next({
           path: '/login',
-          query: { redirect: to.fullPath },
         });
       } else {
         authStore.fetchUser();
