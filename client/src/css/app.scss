@@ -1,1 +1,21 @@
 // app global css in SCSS form
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+body {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+
+  li {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}

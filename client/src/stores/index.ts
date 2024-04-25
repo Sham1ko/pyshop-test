@@ -29,9 +29,5 @@ export default store((/* { ssrContext } */) => {
   // You can add Pinia plugins here
   // pinia.use(SomePiniaPlugin)
 
-  //pinia.use(({ store }) => {
-  //  store.$router = router;
-  //});
-
   return pinia;
 });

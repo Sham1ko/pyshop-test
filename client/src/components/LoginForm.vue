@@ -1,11 +1,11 @@
 <template lang="">
   <form @submit.prevent="handleSubmit" class="column content-center">
-    <h2 class="form-title">Register</h2>
+    <h2 class="form-title">Login</h2>
     <input placeholder="Email" class="input-field" v-model="email" />
     <input placeholder="Password" class="input-field" v-model="password" />
-    <button type="submit" class="submit-btn">Register</button>
+    <button type="submit" class="submit-btn">Login</button>
     <p class="sign-in-text">
-      Already registered? <router-link to="/login">Sign In</router-link>
+      Don't have an account? <router-link to="/register">Register</router-link>
     </p>
   </form>
 </template>
@@ -20,9 +20,7 @@ const email = ref('');
 const password = ref('');
 
 function handleSubmit() {
-  console.log('Email:', email.value);
-  console.log('Password:', password.value);
-  registrationStore.register(email.value, password.value);
+  registrationStore.login(email.value, password.value);
 }
 </script>
 
