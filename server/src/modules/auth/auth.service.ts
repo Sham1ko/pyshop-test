@@ -11,7 +11,7 @@ export class AuthService {
   ) {}
 
   async login(data: any) {
-    const user = await this.validateUser(data.email, data.password);
+    const user = await this.validateUser(data);
     const token = await this.generateToken(user.id);
     return { user, token };
   }
@@ -30,15 +30,15 @@ export class AuthService {
     return { user };
   }
 
-  async validateUser(email: string, password: string) {
-    const user = await this.userService.findUserByEmail(email);
+  async validateUser(data: any) {
+    const user = await this.userService.findUserByEmail(data.email);
 
     if (!user) {
       return null;
     }
 
     const isPasswordValid = await this.userService.validatePassword(
-      password,
+      data.password,
       user.password,
     );
 

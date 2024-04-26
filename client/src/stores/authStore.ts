@@ -2,6 +2,7 @@
 import { AxiosResponse } from 'axios';
 import { defineStore } from 'pinia';
 import { api, authApi } from 'src/boot/axios';
+import { UserType } from 'src/helpers/types/user.type';
 
 export const useAuthStore = defineStore({
   id: 'authStore',
@@ -58,6 +59,24 @@ export const useAuthStore = defineStore({
         const { user } = response.data;
         this.isLoggedIn = true;
         this.user = user;
+      });
+    },
+    updateUser(user: UserType): boolean {
+      try {
+        authApi
+          .patch('/user/' + this.user.id, user)
+          .then((response: AxiosResponse) => {
+            this.user = response.data;
+          });
+        return true;
+      } catch (error) {
+        console.log(error);
+        return false;
+      }
+    },
+    deleteAccount() {
+      authApi.delete('/user/' + this.user.id).then(() => {
+        this.logout();
       });
     },
   },

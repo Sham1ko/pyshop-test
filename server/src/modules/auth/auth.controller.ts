@@ -1,15 +1,16 @@
 import {
   Body,
-  ClassSerializerInterceptor,
   Controller,
   Get,
   Post,
   Request,
-  UseInterceptors,
+  UseGuards,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { MeResponseDto } from './dto/me-response.dto';
-import { UserDto } from '../user/types/user.dto';
+import { AuthGuard } from '@nestjs/passport';
+import { ApiTags } from '@nestjs/swagger';
+
+@ApiTags('auth')
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
@@ -25,6 +26,7 @@ export class AuthController {
   }
 
   @Get('me')
+  @UseGuards(AuthGuard('jwt'))
   me(@Request() req: any) {
     return this.authService.me(req);
   }
